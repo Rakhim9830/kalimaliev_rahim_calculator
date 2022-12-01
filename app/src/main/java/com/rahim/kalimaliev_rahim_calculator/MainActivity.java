@@ -2,8 +2,11 @@ package com.rahim.kalimaliev_rahim_calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -13,10 +16,12 @@ private TextView textView;
 private Integer start;
 private Integer end;
 private boolean result;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         textView = findViewById(R.id.result);
 
     }
@@ -27,6 +32,7 @@ private boolean result;
                 textView.append("1");
                 if (textView.getText().toString().equals("0") || result){
                     textView.setText("1");
+
                 }else {
                     textView.append("1");
                 }
@@ -98,22 +104,17 @@ private boolean result;
                 }
                 break;
 
-            case R.id.zero:
-
-                if (textView.getText().toString().equals("0") || result){
-                    textView.setText("0");
-                }else {
-                    textView.append("0");
-                }
-                break;
 
             case R.id.delete:
+                start = 0;
+                end= 0;
                 textView.setText("0");
                 break;
         }
         result = false;
     }
 
+    @SuppressLint({"SetTextI18n", "NonConstantResourceId"})
     public void onOperationClick(View view) {
         switch (view.getId()){
             case R.id.plus:
@@ -122,12 +123,12 @@ private boolean result;
                 break;
 
                 case  R.id.ravno:
+                    findViewById(R.id.clickOnMe).setVisibility(View.VISIBLE);
                     end = Integer.valueOf(textView.getText().toString());
                     Integer answer = start + end;
                     textView.setText(answer.toString());
                     break;
         }
-
         switch (view.getId()){
             case R.id.minus:
 
@@ -135,12 +136,12 @@ private boolean result;
                 break;
 
             case  R.id.ravno:
+                findViewById(R.id.clickOnMe).setVisibility(View.VISIBLE);
                 end = Integer.valueOf(textView.getText().toString());
                 Integer answer = start - end;
                 textView.setText(answer.toString());
                 break;
         }
-
         switch (view.getId()){
             case R.id.umnozh:
 
@@ -148,6 +149,7 @@ private boolean result;
                 break;
 
             case  R.id.ravno:
+                findViewById(R.id.clickOnMe).setVisibility(View.VISIBLE);
                 end = Integer.valueOf(textView.getText().toString());
                 Integer answer = start * end;
                 textView.setText(answer.toString());
@@ -161,11 +163,26 @@ private boolean result;
                 break;
 
             case  R.id.ravno:
+                findViewById(R.id.clickOnMe).setVisibility(View.VISIBLE);
                 end = Integer.valueOf(textView.getText().toString());
-                Integer answer = start / end;
-                textView.setText(answer.toString());
+                Integer minus =  start / end;
+                textView.setText(minus.toString());
                 break;
         }
+
+
+
         result = true;
+
+
+        }
+
+
+
+
+    public void click0nme(View view) {
+        Intent intent = new Intent(MainActivity.this, Policie.class);
+        startActivity(intent);
     }
+
 }
