@@ -16,6 +16,7 @@ private TextView textView;
 private Integer start;
 private Integer end;
 private boolean result;
+Integer answer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,6 @@ private boolean result;
     public void onNumberClick(View view) {
         switch (view.getId()){
             case R.id.one:
-                textView.append("1");
                 if (textView.getText().toString().equals("0") || result){
                     textView.setText("1");
 
@@ -121,61 +121,34 @@ private boolean result;
 
                 start = Integer.valueOf(textView.getText().toString());
                 break;
+            case R.id.minus:
+                start = Integer.valueOf(textView.getText().toString());
+
+            case R.id.umnozh:
+                start = Integer.valueOf(textView.getText().toString());
+
+            case  R.id.delenie:
+                start = Integer.valueOf(textView.getText().toString());
+
+
+
 
                 case  R.id.ravno:
                     findViewById(R.id.clickOnMe).setVisibility(View.VISIBLE);
                     end = Integer.valueOf(textView.getText().toString());
-                    Integer answer = start + end;
+                    answer = start + end;
                     textView.setText(answer.toString());
-                    break;
-        }
-        switch (view.getId()){
-            case R.id.minus:
-
-                start = Integer.valueOf(textView.getText().toString());
-                break;
-
-            case  R.id.ravno:
-                findViewById(R.id.clickOnMe).setVisibility(View.VISIBLE);
-                end = Integer.valueOf(textView.getText().toString());
-                Integer answer = start - end;
-                textView.setText(answer.toString());
-                break;
-        }
-        switch (view.getId()){
-            case R.id.umnozh:
-
-                start = Integer.valueOf(textView.getText().toString());
-                break;
-
-            case  R.id.ravno:
-                findViewById(R.id.clickOnMe).setVisibility(View.VISIBLE);
-                end = Integer.valueOf(textView.getText().toString());
-                Integer answer = start * end;
-                textView.setText(answer.toString());
-                break;
-        }
-
-        switch (view.getId()){
-            case R.id.delenie:
-
-                start = Integer.valueOf(textView.getText().toString());
-                break;
-
-            case  R.id.ravno:
-                findViewById(R.id.clickOnMe).setVisibility(View.VISIBLE);
-                end = Integer.valueOf(textView.getText().toString());
-                Integer minus =  start / end;
-                textView.setText(minus.toString());
-                break;
-        }
+                   answer = start - end;
+                   textView.setText(answer.toString());
+                   answer = start * end;
+                   textView.setText(answer.toString());
 
 
+
+                    break;        }
 
         result = true;
-
-
-        }
+    }
 
 
 
